@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Harshit Sharma trident logo">
+  <defs>
+    <linearGradient id="trident-gold-cyan" x1="24" y1="14" x2="104" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8d77c"/>
+      <stop offset="0.42" stop-color="#d8a93d"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="trident-edge" x1="64" y1="8" x2="64" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff4bd"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#020617"/>
+  <path
+    d="M64 14 75 32 68 42v38l17-17V38l-8-7 19-14 8 25-10-4v36L68 100v10h17l8-9 8 18H27l8-18 8 9h17v-10L34 74V38l-10 4 8-25 19 14-8 7v25l17 17V42l-7-10 11-18Z"
+    fill="url(#trident-gold-cyan)"
+    stroke="url(#trident-edge)"
+    stroke-width="4"
+    stroke-linejoin="round"
+    filter="url(#soft-glow)"
+  />
+  <path d="M64 32v76" stroke="#fff7cc" stroke-width="4" stroke-linecap="round" opacity="0.48"/>
+</svg>
