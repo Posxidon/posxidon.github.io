@@ -67,7 +67,7 @@ const projects = [
     name: 'Hyderabad Pickleball Association Platform',
     type: 'Backend Services | Aug 2025 - Mar 2026',
     description:
-      'Backend services powering a production sports platform used by 1000+ users for tournament management and event workflows.',
+      'Production backend services supporting 1000+ users for tournament, event, and user management workflows on the Hyderabad Pickleball Association platform.',
     highlights: [
       'Designed relational schemas for users, events, tournament registration, and platform workflows.',
       'Built REST APIs for scalable user and event management.',
@@ -253,24 +253,22 @@ function App() {
   return (
     <main className="min-h-screen overflow-hidden">
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-slate-950/80 shadow-lg shadow-black/10 backdrop-blur-xl">
-        <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
-          <a href="#top" className="shrink-0 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">
-            Harshit Sharma
-          </a>
-          <a
-            href="#top"
-            aria-label="Harshit Sharma home"
-            className="pointer-events-none absolute left-1/2 -translate-x-1/2"
-          >
-            <TridentLogo className="h-11 w-11" />
+        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
+          <a href="#top" className="flex shrink-0 items-center gap-3">
+            <TridentLogo className="h-8 w-8" />
+            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">
+              Harshit Sharma
+            </span>
           </a>
           <div className="hidden items-center gap-4 text-xs text-slate-300 lg:flex xl:text-sm">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`whitespace-nowrap rounded-full px-2.5 py-2 transition hover:bg-white/5 hover:text-cyan-200 xl:px-3 ${
-                  activeSection === item.href.slice(1) ? 'bg-cyan-300/10 text-cyan-200' : ''
+                className={`whitespace-nowrap rounded-full border-b px-2.5 py-2 transition hover:bg-white/5 hover:text-cyan-200 xl:px-3 ${
+                  activeSection === item.href.slice(1)
+                    ? 'border-cyan-300/70 bg-cyan-300/10 text-cyan-200'
+                    : 'border-transparent'
                 }`}
               >
                 {item.label}
@@ -307,6 +305,11 @@ function App() {
               reliability. I&apos;ve worked on real-world systems in healthcare and public-sector
               environments, using Java, Spring Boot, React, PostgreSQL, Azure, testing, and CI/CD.
             </p>
+            <p className="mt-5 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.035] p-4 text-sm leading-6 text-slate-400">
+              Built and improved production systems in healthcare and public-sector environments,
+              including backend workflows that improved performance by 50%, reduced regression time
+              by 30%, and reduced post-deployment issues by 25%.
+            </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <ButtonLink href="#projects" variant="primary">
               View Projects
@@ -324,6 +327,13 @@ function App() {
               LinkedIn
             </ButtonLink>
             </div>
+            <div className="mt-6 flex max-w-3xl flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-100/80">
+              {['Java', 'Spring Boot', 'React', 'PostgreSQL', 'Azure', 'CI/CD', 'Testing', 'Data Pipelines'].map((item) => (
+                <span key={item} className="rounded-full border border-cyan-300/15 bg-cyan-300/5 px-3 py-1">
+                  {item}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </div>
 
@@ -332,11 +342,12 @@ function App() {
 
       <MotionSection id="experience" className="mx-auto max-w-7xl px-5 py-16 sm:px-8" motionPresets={motionPresets}>
         <SectionHeading title="Experience" />
-        <div className="mt-10 space-y-5">
+        <StaggerGroup className="mt-10 space-y-5" motionPresets={motionPresets}>
           {experience.map((item) => (
-            <article
+            <motion.article
               key={`${item.company}-${item.role}`}
-              className="grid gap-5 rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:grid-cols-[14rem_1fr]"
+              variants={motionPresets.card}
+              className="grid gap-5 rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-glow md:grid-cols-[14rem_1fr]"
             >
               <p className="text-sm font-semibold text-cyan-200">{item.period}</p>
               <div>
@@ -353,9 +364,9 @@ function App() {
                   ))}
                 </ul>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </StaggerGroup>
       </MotionSection>
 
       <MotionSection id="featured" className="border-y border-white/10 bg-white/[0.03]" motionPresets={motionPresets}>
@@ -383,14 +394,18 @@ function App() {
                   </ButtonLink>
                 </div>
 
-                <div className="mt-7 space-y-3">
+                <StaggerGroup className="mt-7 space-y-3" motionPresets={motionPresets}>
                   {degreeFlowHighlights.map((item) => (
-                    <article key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                    <motion.article
+                      key={item.title}
+                      variants={motionPresets.card}
+                      className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/35"
+                    >
                       <h3 className="text-sm font-bold text-white">{item.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-slate-400">{item.body}</p>
-                    </article>
+                    </motion.article>
                   ))}
-                </div>
+                </StaggerGroup>
               </div>
 
               <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/30">
@@ -398,7 +413,7 @@ function App() {
                   System Architecture
                 </p>
                 <div className="mt-5 space-y-5">
-                  <div className="grid gap-3 lg:flex lg:items-stretch">
+                  <StaggerGroup className="grid gap-3 lg:flex lg:items-stretch" motionPresets={motionPresets}>
                     {[
                       { label: 'User / Student' },
                       { label: 'React Frontend' },
@@ -406,18 +421,27 @@ function App() {
                       { label: 'Spring Boot Backend' },
                     ].map((node, index, nodes) => (
                       <FragmentWithConnector key={node.label} showConnector={index < nodes.length - 1}>
-                        <ArchitectureNode label={node.label} sublabel={node.sublabel} index={index + 1} />
+                        <ArchitectureNode
+                          label={node.label}
+                          sublabel={node.sublabel}
+                          index={index + 1}
+                          variants={motionPresets.card}
+                        />
                       </FragmentWithConnector>
                     ))}
-                  </div>
+                  </StaggerGroup>
 
                   <div className="mx-auto hidden h-8 w-px bg-gradient-to-b from-cyan-300 to-blue-500 lg:block" />
 
-                  <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                  <StaggerGroup className="grid gap-4 md:grid-cols-2 xl:grid-cols-4" motionPresets={motionPresets}>
                     {degreeFlowServices.map((service) => (
-                      <article key={service.title} className="rounded-2xl border border-cyan-300/15 bg-slate-950/80 p-4">
+                      <motion.article
+                        key={service.title}
+                        variants={motionPresets.card}
+                        className="rounded-2xl border border-cyan-300/15 bg-slate-950/80 p-5 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/35"
+                      >
                         <h3 className="text-sm font-bold text-white">{service.title}</h3>
-                        <ul className="mt-3 space-y-2 text-xs leading-5 text-slate-400">
+                        <ul className="mt-3 space-y-2.5 text-xs leading-6 text-slate-400">
                           {service.items.map((item) => (
                             <li key={item} className="flex gap-2">
                               <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan-300" />
@@ -425,13 +449,13 @@ function App() {
                             </li>
                           ))}
                         </ul>
-                      </article>
+                      </motion.article>
                     ))}
-                  </div>
+                  </StaggerGroup>
 
                   <div className="mx-auto hidden h-8 w-px bg-gradient-to-b from-cyan-300 to-blue-500 lg:block" />
 
-                  <div className="grid gap-3 lg:grid-cols-3">
+                  <StaggerGroup className="grid gap-4 lg:grid-cols-3" motionPresets={motionPresets}>
                     <ArchitectureLayer
                       title="McMaster Academic Calendar API"
                       body="External course and calendar data feeding course lookup, metadata, filtering, and requirements."
@@ -444,7 +468,7 @@ function App() {
                       title="Azure Deployment"
                       body="React frontend deployed separately, Spring Boot backend on Azure App Service, PostgreSQL hosted on Azure."
                     />
-                  </div>
+                  </StaggerGroup>
                 </div>
               </div>
             </div>
@@ -460,10 +484,11 @@ function App() {
 
       <MotionSection id="projects" className="mx-auto max-w-7xl px-5 py-16 sm:px-8" motionPresets={motionPresets}>
         <SectionHeading title="Projects" />
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        <StaggerGroup className="mt-10 grid gap-5 lg:grid-cols-2" motionPresets={motionPresets}>
           {projects.map((project) => (
-            <article
+            <motion.article
               key={project.name}
+              variants={motionPresets.card}
               className="rounded-3xl border border-white/10 bg-slate-950/70 p-6 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-glow"
             >
               <p className="text-sm font-semibold text-cyan-200">{project.type}</p>
@@ -503,9 +528,9 @@ function App() {
                   )}
                 </div>
               )}
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </StaggerGroup>
       </MotionSection>
 
       <MotionSection id="education" className="mx-auto max-w-7xl px-5 py-16 sm:px-8" motionPresets={motionPresets}>
@@ -531,18 +556,22 @@ function App() {
       <MotionSection id="skills" className="border-y border-white/10 bg-white/[0.03]" motionPresets={motionPresets}>
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
           <SectionHeading title="Skills" />
-          <div className="mt-10 grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <StaggerGroup className="mt-10 grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-4" motionPresets={motionPresets}>
             {skillGroups.map((group) => (
-              <article key={group.title} className="h-full rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+              <motion.article
+                key={group.title}
+                variants={motionPresets.card}
+                className="h-full rounded-3xl border border-white/10 bg-slate-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-glow"
+              >
                 <h3 className="text-lg font-bold text-white">{group.title}</h3>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {group.skills.map((skill) => (
                     <Badge key={skill}>{skill}</Badge>
                   ))}
                 </div>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </MotionSection>
 
@@ -619,9 +648,12 @@ function FragmentWithConnector({ children, showConnector }) {
   );
 }
 
-function ArchitectureNode({ label, sublabel, index }) {
+function ArchitectureNode({ label, sublabel, index, variants }) {
   return (
-    <div className="relative flex min-h-24 min-w-0 flex-1 rounded-2xl border border-white/10 bg-slate-950/80 p-4">
+    <motion.div
+      variants={variants}
+      className="relative flex min-h-24 min-w-0 flex-1 rounded-2xl border border-white/10 bg-slate-950/80 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/35"
+    >
       <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2 text-center">
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-sm font-bold text-slate-950">
           {index}
@@ -629,24 +661,41 @@ function ArchitectureNode({ label, sublabel, index }) {
         <span className="min-w-0 text-wrap text-sm font-semibold leading-tight text-white">{label}</span>
         {sublabel && <span className="text-xs font-medium leading-tight text-slate-400">{sublabel}</span>}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function ArchitectureLayer({ title, body }) {
   return (
-    <article className="rounded-2xl border border-blue-300/15 bg-gradient-to-br from-blue-950/40 to-slate-950/80 p-4">
+    <motion.article
+      variants={cardItemVariants}
+      className="rounded-2xl border border-blue-300/15 bg-gradient-to-br from-blue-950/40 to-slate-950/80 p-5 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/35"
+    >
       <h3 className="text-sm font-bold text-cyan-100">{title}</h3>
-      <p className="mt-2 text-xs leading-5 text-slate-400">{body}</p>
-    </article>
+      <p className="mt-2 text-xs leading-6 text-slate-400">{body}</p>
+    </motion.article>
   );
 }
 
 function MotionSection({ children, className, id, motionPresets }) {
   return (
-    <motion.section id={id} className={className} {...motionPresets.section}>
+    <motion.section id={id} className={`${className} scroll-mt-24`} {...motionPresets.section}>
       {children}
     </motion.section>
+  );
+}
+
+function StaggerGroup({ children, className, motionPresets }) {
+  return (
+    <motion.div
+      className={className}
+      variants={motionPresets.stagger}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.18 }}
+    >
+      {children}
+    </motion.div>
   );
 }
 
@@ -677,6 +726,11 @@ function TridentLogo({ className = '' }) {
   );
 }
 
+const cardItemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.42, ease: 'easeOut' } },
+};
+
 function createMotionPresets(shouldReduceMotion) {
   if (shouldReduceMotion) {
     return {
@@ -684,6 +738,8 @@ function createMotionPresets(shouldReduceMotion) {
       heroBody: {},
       heroImage: {},
       section: {},
+      stagger: {},
+      card: {},
     };
   }
 
@@ -708,6 +764,15 @@ function createMotionPresets(shouldReduceMotion) {
       viewport: { once: false, amount: 0.2 },
       transition: { duration: 0.55, ease: 'easeOut' },
     },
+    stagger: {
+      hidden: {},
+      show: {
+        transition: {
+          staggerChildren: 0.07,
+        },
+      },
+    },
+    card: cardItemVariants,
   };
 }
 
